@@ -1,18 +1,18 @@
 <?php
 
 include('conexion.php');
-$query = "SELECT idcust, name, email, phone, paswd FROM customer";
+$query = "SELECT id_cliente, nombre, telefono, pais FROM cliente";
 $result= mysqli_query($cnn,$query);
 
 if (mysqli_num_rows($result) > 0){
 
-    $jsoncustomers = array();
+    $jsonclientes = array();
 
     foreach($result as $reg){
-        $jsoncustomers ['customers'][] = $reg;
+        $jsonclientes ['clientes'][] = $reg;
     }
 
-    echo json_encode($jsoncustomers);
+    echo json_encode($jsonclientes);
 
 }
 else{

@@ -3,18 +3,18 @@
 include('conexion.php');
 
 
-$idcust = $_REQUEST['idcust'];
-$sql = "SELECT idcust FROM invoice WHERE idcust = '$idcust'";
+$id_cliente = $_REQUEST['id_cliente'];
+$sql = "SELECT id_cliente FROM cliente WHERE id_cliente = '$id_cliente'";
 $res = mysqli_query($cnn,$sql);
 
-if (mysqli_num_rows($res) == 0){
-    $query = "DELETE FROM customer WHERE idcust = '$idcust'";
+if (mysqli_num_rows($res) > 0){
+    $query = "DELETE FROM `cliente` WHERE id_cliente = '$id_cliente'";
     mysqli_query($cnn,$query);
     echo " registro eliminado";
 
 
 }
 else{
-    echo " usuario no se puede borrar pro que tiene facuras";
+    echo " usuario no se puede borrar por que tiene deudas";
 }
 ?>

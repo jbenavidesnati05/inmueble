@@ -3,15 +3,15 @@
 include('conexion.php');
 
 
-$email =$_REQUEST['email'];
-$passwd=$_REQUEST['passwd'];
+$id_cliente =$_REQUEST['id_cliente'];
+//$passwd=$_REQUEST['passwd'];
 
-$sql = "SELECT idcust, name, email, phone, paswd FROM customer WHERE email= '$email' and passwd = '$passwd'";
+$sql = "SELECT id_cliente, nombre, telefono, pais FROM cliente WHERE id_cliente= '$id_cliente'";
 
 $res = mysqli_query($cnn,$sql);
 
 if (mysqli_num_rows($res) > 0){
-    // si no encontro por el email y contraseña
+    // si no encontro por el id
 $row = $res->fetch_all(MYSQLI_ASSOC);
 echo json_encode($row);
 
